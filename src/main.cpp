@@ -28,24 +28,24 @@ FreeNode* allocate(FreeNode*& head)
 int main() 
 {
 	FreeNode* head = nullptr;
-	FreeNode node_a{};
-	FreeNode node_b{};
-	FreeNode node_c{};
 
-	head = &node_a;
-	node_a.next = &node_b;
-	node_b.next = &node_c;
+	const int SIZE = 5;
 
-	//while(node_ptr != nullptr)
-	//{
-	//	std::cout << node_ptr << '\n';
-	//	node_ptr = node_ptr->next;
-	//}
+	FreeNode arr[SIZE];
 
-	std::cout << allocate(head) << '\n';
-	std::cout << allocate(head) << '\n';
-	std::cout << allocate(head) << '\n';
-	std::cout << allocate(head) << '\n';	
+	head = arr;
+
+	for(int i = 0; i < SIZE; i++){
+		if(i != SIZE-1){
+			arr[i].next = &arr[i+1];
+		}else{
+			arr[i].next = nullptr;
+		}
+	}
+
+	for(int i = 0; i < SIZE; i++){
+		std::cout << arr[i].next << '\n';
+	}
 
 	return 0;
 }
